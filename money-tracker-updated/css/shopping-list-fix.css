@@ -1,0 +1,52 @@
+/* Shopping list layout fixes */
+.shopping-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.shopping-item:last-child {
+    border-bottom: none;
+}
+
+.shopping-checkbox {
+    margin-right: 15px;
+}
+
+.shopping-details {
+    flex: 1;
+}
+
+.shopping-title {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.shopping-meta {
+    display: flex;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+}
+
+.shopping-amount {
+    font-weight: 500;
+    color: var(--danger-color);
+    margin-right: 15px;
+}
+
+/* Fix for tight buttons */
+.shopping-item .btn {
+    margin-right: 5px;
+}
+
+.shopping-item .btn:last-child {
+    margin-right: 0;
+}
+
+/* Add more spacing between buttons and amount */
+.shopping-item .ml-3 {
+    margin-left: 15px !important;
+    display: flex;
+}

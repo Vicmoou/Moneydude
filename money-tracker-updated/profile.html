@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Money Tracker</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <button class="navbar-toggler" id="sidebar-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <span>Money Tracker</span>
+        </div>
+        <div class="navbar-nav">
+            <div class="nav-item">
+                <a href="profile.html" class="nav-link active">
+                    <i class="fas fa-user"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Money Tracker</h3>
+        </div>
+        <ul class="sidebar-nav">
+            <li class="sidebar-item">
+                <a href="dashboard.html" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-home"></i></span>
+                    Dashboard
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="accounts.html" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-wallet"></i></span>
+                    Accounts
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="transactions.html" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-exchange-alt"></i></span>
+                    Transactions
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="categories.html" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-tags"></i></span>
+                    Categories
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="shopping-list.html" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-shopping-cart"></i></span>
+                    Shopping List
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="budget.html" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-chart-pie"></i></span>
+                    Budget
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="reports.html" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-chart-bar"></i></span>
+                    Reports
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="ai-chat.html" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-robot"></i></span>
+                    AI Assistant
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="#" id="logout-btn" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-sign-out-alt"></i></span>
+                    Logout
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="main-content">
+        <h1 class="mb-4">Profile</h1>
+        
+        <!-- Profile Information -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3>Personal Information</h3>
+            </div>
+            <div class="card-body">
+                <div class="profile-header mb-4">
+                    <div class="profile-avatar">
+                        <img id="profile-image" src="https://via.placeholder.com/100" alt="Profile Picture">
+                    </div>
+                    <div class="profile-info">
+                        <h2 id="profile-name">Username</h2>
+                        <p class="text-muted" id="profile-joined">Joined: January 1, 2023</p>
+                        <div class="file-upload mt-2">
+                            <input type="file" id="profile-picture-upload" accept="image/*">
+                            <label for="profile-picture-upload" class="file-upload-label">Change Profile Picture</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <form id="profile-form">
+                    <div class="form-group">
+                        <label for="profile-username" class="form-label">Username</label>
+                        <input type="text" id="profile-username" class="form-control" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-email" class="form-label">Email (Optional)</label>
+                        <input type="email" id="profile-email" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Settings -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3>Settings</h3>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="theme-select" class="form-label">Theme</label>
+                    <select id="theme-select" class="form-select">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="currency-select" class="form-label">Currency</label>
+                    <select id="currency-select" class="form-select">
+                        <option value="Dollar">Dollar ($)</option>
+                        <option value="Euros">Euros (€)</option>
+                        <option value="Reais">Reais (R$)</option>
+                        <option value="Kwanza">Kwanza (Kz)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Data Management -->
+        <div class="card">
+            <div class="card-header">
+                <h3>Data Management</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 mb-3">
+                        <h4>Export Data</h4>
+                        <p>Download all your data as a JSON file.</p>
+                        <button id="export-data" class="btn btn-primary">
+                            <i class="fas fa-download mr-2"></i> Export Data
+                        </button>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <h4>Import Data</h4>
+                        <p>Import data from a JSON file.</p>
+                        <div class="file-upload">
+                            <input type="file" id="import-data-file" accept=".json">
+                            <label for="import-data-file" class="file-upload-label">Choose File</label>
+                        </div>
+                        <button id="import-data" class="btn btn-primary mt-2" disabled>
+                            <i class="fas fa-upload mr-2"></i> Import Data
+                        </button>
+                    </div>
+                </div>
+                <hr>
+                <div class="mt-4">
+                    <h4 class="text-danger">Danger Zone</h4>
+                    <p>Delete all your data. This action cannot be undone.</p>
+                    <button id="reset-data" class="btn btn-danger">
+                        <i class="fas fa-trash mr-2"></i> Reset All Data
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>

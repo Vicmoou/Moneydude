@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories - Money Tracker</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <button class="navbar-toggler" id="sidebar-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <span>Money Tracker</span>
+        </div>
+        <div class="navbar-nav">
+            <div class="nav-item">
+                <a href="profile.html" class="nav-link">
+                    <i class="fas fa-user"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Money Tracker</h3>
+        </div>
+        <ul class="sidebar-nav">
+            <li class="sidebar-item">
+                <a href="dashboard.html" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-home"></i></span>
+                    Dashboard
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="accounts.html" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-wallet"></i></span>
+                    Accounts
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="transactions.html" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-exchange-alt"></i></span>
+                    Transactions
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="categories.html" class="sidebar-link active">
+                    <span class="sidebar-icon"><i class="fas fa-tags"></i></span>
+                    Categories
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="shopping-list.html" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-shopping-cart"></i></span>
+                    Shopping List
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="budget.html" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-chart-pie"></i></span>
+                    Budget
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="reports.html" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-chart-bar"></i></span>
+                    Reports
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="ai-chat.html" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-robot"></i></span>
+                    AI Assistant
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="#" id="logout-btn" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-sign-out-alt"></i></span>
+                    Logout
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="main-content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>Categories</h1>
+            <button class="btn btn-primary" id="add-category-btn">
+                <i class="fas fa-plus mr-2"></i> Add Category
+            </button>
+        </div>
+        
+        <!-- Category Tabs -->
+        <ul class="nav nav-tabs mb-4" id="category-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" id="income-tab" href="#income">Income</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="expense-tab" href="#expense">Expense</a>
+            </li>
+        </ul>
+        
+        <!-- Income Categories -->
+        <div class="tab-content">
+            <div class="tab-pane active" id="income-categories">
+                <div class="row" id="income-categories-container">
+                    <!-- Income categories will be dynamically added here -->
+                </div>
+            </div>
+            
+            <!-- Expense Categories -->
+            <div class="tab-pane" id="expense-categories" style="display: none;">
+                <div class="row" id="expense-categories-container">
+                    <!-- Expense categories will be dynamically added here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Category Modal -->
+    <div class="modal-backdrop" id="category-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="category-modal-title">Add Category</h4>
+                <button class="modal-close" id="close-category-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="category-form">
+                    <input type="hidden" id="category-id">
+                    <div class="form-group">
+                        <label for="category-name" class="form-label">Category Name</label>
+                        <input type="text" id="category-name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category-type" class="form-label">Type</label>
+                        <select id="category-type" class="form-select">
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="category-icon" class="form-label">Icon (Optional)</label>
+                        <div class="file-upload">
+                            <input type="file" id="category-icon" accept="image/*">
+                            <label for="category-icon" class="file-upload-label">Choose File</label>
+                        </div>
+                        <div id="category-icon-preview" class="mt-2" style="display: none;">
+                            <img id="category-icon-img" style="max-width: 100%; max-height: 100px;">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancel-category">Cancel</button>
+                <button class="btn btn-primary" id="save-category">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/categories.js"></script>
+</body>
+</html>

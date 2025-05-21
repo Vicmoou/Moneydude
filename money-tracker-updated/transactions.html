@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions - Money Tracker</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <button class="navbar-toggler" id="sidebar-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <span>Money Tracker</span>
+        </div>
+        <div class="navbar-nav">
+            <div class="nav-item">
+                <a href="profile.html" class="nav-link">
+                    <i class="fas fa-user"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Money Tracker</h3>
+        </div>
+        <ul class="sidebar-nav">
+            <li class="sidebar-item">
+                <a href="dashboard.html" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-home"></i></span>
+                    Dashboard
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="accounts.html" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-wallet"></i></span>
+                    Accounts
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="transactions.html" class="sidebar-link active">
+                    <span class="sidebar-icon"><i class="fas fa-exchange-alt"></i></span>
+                    Transactions
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="categories.html" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-tags"></i></span>
+                    Categories
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="shopping-list.html" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-shopping-cart"></i></span>
+                    Shopping List
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="budget.html" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-chart-pie"></i></span>
+                    Budget
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="reports.html" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-chart-bar"></i></span>
+                    Reports
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="ai-chat.html" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-robot"></i></span>
+                    AI Assistant
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="#" id="logout-btn" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-sign-out-alt"></i></span>
+                    Logout
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="main-content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>Transactions</h1>
+            <button class="btn btn-primary" id="add-transaction-btn">
+                <i class="fas fa-plus mr-2"></i> Add Transaction
+            </button>
+        </div>
+        
+        <!-- Filters -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3>Filters</h3>
+            </div>
+            <div class="card-body">
+                <form id="filter-form">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="form-group">
+                                <label for="filter-date-from" class="form-label">Date From</label>
+                                <input type="date" id="filter-date-from" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="form-group">
+                                <label for="filter-date-to" class="form-label">Date To</label>
+                                <input type="date" id="filter-date-to" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="form-group">
+                                <label for="filter-type" class="form-label">Type</label>
+                                <select id="filter-type" class="form-select">
+                                    <option value="all">All</option>
+                                    <option value="income">Income</option>
+                                    <option value="expense">Expense</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="form-group">
+                                <label for="filter-account" class="form-label">Account</label>
+                                <select id="filter-account" class="form-select">
+                                    <option value="all">All Accounts</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="form-group">
+                                <label for="filter-category" class="form-label">Category</label>
+                                <select id="filter-category" class="form-select">
+                                    <option value="all">All Categories</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="form-group">
+                                <label for="filter-min-amount" class="form-label">Min Amount</label>
+                                <input type="number" id="filter-min-amount" class="form-control" min="0" step="0.01">
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="form-group">
+                                <label for="filter-max-amount" class="form-label">Max Amount</label>
+                                <input type="number" id="filter-max-amount" class="form-control" min="0" step="0.01">
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="form-group">
+                                <label for="filter-include-in-reports" class="form-label">Include in Reports</label>
+                                <select id="filter-include-in-reports" class="form-select">
+                                    <option value="all">All</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label for="filter-search" class="form-label">Search</label>
+                                <input type="text" id="filter-search" class="form-control" placeholder="Search in description...">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 d-flex align-items-end">
+                            <button type="submit" class="btn btn-primary mr-2">Apply Filters</button>
+                            <button type="button" id="reset-filters" class="btn btn-outline">Reset</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Transactions List -->
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3>Transactions</h3>
+                <div>
+                    <label for="sort-by" class="mr-2">Sort by:</label>
+                    <select id="sort-by" class="form-select form-select-sm" style="display: inline-block; width: auto;">
+                        <option value="date-desc">Date (Newest First)</option>
+                        <option value="date-asc">Date (Oldest First)</option>
+                        <option value="amount-desc">Amount (Highest First)</option>
+                        <option value="amount-asc">Amount (Lowest First)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Description</th>
+                                <th>Category</th>
+                                <th>Account</th>
+                                <th>Amount</th>
+                                <th>In Reports</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactions-table-body">
+                            <!-- Transactions will be dynamically added here -->
+                        </tbody>
+                    </table>
+                </div>
+                <div id="no-transactions-message" class="text-center p-4" style="display: none;">
+                    <p class="text-muted">No transactions found</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Transaction Modal -->
+    <div class="modal-backdrop" id="transaction-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="transaction-modal-title">Add Transaction</h4>
+                <button class="modal-close" id="close-transaction-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="transaction-form">
+                    <input type="hidden" id="transaction-id">
+                    <div class="form-group">
+                        <label for="transaction-type" class="form-label">Type</label>
+                        <select id="transaction-type" class="form-select">
+                            <option value="expense">Expense</option>
+                            <option value="income">Income</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="transaction-amount" class="form-label">Amount</label>
+                        <input type="number" id="transaction-amount" class="form-control" step="0.01" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="transaction-category" class="form-label">Category</label>
+                        <select id="transaction-category" class="form-select" required></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="transaction-account" class="form-label">Account</label>
+                        <select id="transaction-account" class="form-select" required></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="transaction-date" class="form-label">Date</label>
+                        <input type="date" id="transaction-date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="transaction-description" class="form-label">Description</label>
+                        <input type="text" id="transaction-description" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-check-label">
+                            <input type="checkbox" id="transaction-include-in-reports" checked> Include in reports
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancel-transaction">Cancel</button>
+                <button class="btn btn-primary" id="save-transaction">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/transactions.js"></script>
+</body>
+</html>

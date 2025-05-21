@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget - Money Tracker</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <button class="navbar-toggler" id="sidebar-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <span>Money Tracker</span>
+        </div>
+        <div class="navbar-nav">
+            <div class="nav-item">
+                <a href="profile.html" class="nav-link">
+                    <i class="fas fa-user"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Money Tracker</h3>
+        </div>
+        <ul class="sidebar-nav">
+            <li class="sidebar-item">
+                <a href="dashboard.html" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-home"></i></span>
+                    Dashboard
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="accounts.html" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-wallet"></i></span>
+                    Accounts
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="transactions.html" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-exchange-alt"></i></span>
+                    Transactions
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="categories.html" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-tags"></i></span>
+                    Categories
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="shopping-list.html" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-shopping-cart"></i></span>
+                    Shopping List
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="budget.html" class="sidebar-link active">
+                    <span class="sidebar-icon"><i class="fas fa-chart-pie"></i></span>
+                    Budget
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="reports.html" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-chart-bar"></i></span>
+                    Reports
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="ai-chat.html" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-robot"></i></span>
+                    AI Assistant
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="#" id="logout-btn" class="sidebar-link">
+                    <span class="sidebar-icon"><i class="fas fa-sign-out-alt"></i></span>
+                    Logout
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="main-content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>Budget</h1>
+            <button class="btn btn-primary" id="add-budget-btn">
+                <i class="fas fa-plus mr-2"></i> Add Budget
+            </button>
+        </div>
+        
+        <!-- Current Period -->
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3>Current Period</h3>
+                <div class="date-range">
+                    <input type="month" id="budget-month" class="form-control" value="">
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row mb-4">
+                    <div class="col-md-4 col-sm-12">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h4>Total Budget</h4>
+                                <h2 id="total-budget" class="currency-display">$0.00</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h4>Spent</h4>
+                                <h2 id="total-spent" class="currency-display">$0.00</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h4>Remaining</h4>
+                                <h2 id="total-remaining" class="currency-display">$0.00</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="budget-progress-container">
+                    <!-- Budget progress bars will be dynamically added here -->
+                </div>
+                <div id="no-budgets-message" class="text-center p-4" style="display: none;">
+                    <p class="text-muted">No budgets set for this period</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Budget List -->
+        <div class="card">
+            <div class="card-header">
+                <h3>All Budgets</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Amount</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Progress</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="budgets-table-body">
+                            <!-- Budgets will be dynamically added here -->
+                        </tbody>
+                    </table>
+                </div>
+                <div id="no-budgets-table-message" class="text-center p-4" style="display: none;">
+                    <p class="text-muted">No budgets created yet</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Budget Modal -->
+    <div class="modal-backdrop" id="budget-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="budget-modal-title">Add Budget</h4>
+                <button class="modal-close" id="close-budget-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="budget-form">
+                    <input type="hidden" id="budget-id">
+                    <div class="form-group">
+                        <label for="budget-category" class="form-label">Category</label>
+                        <select id="budget-category" class="form-select" required></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="budget-amount" class="form-label">Budget Amount</label>
+                        <input type="number" id="budget-amount" class="form-control" step="0.01" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="budget-start-date" class="form-label">Start Date</label>
+                        <input type="date" id="budget-start-date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="budget-end-date" class="form-label">End Date</label>
+                        <input type="date" id="budget-end-date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="budget-notes" class="form-label">Notes</label>
+                        <textarea id="budget-notes" class="form-control" rows="2"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancel-budget">Cancel</button>
+                <button class="btn btn-primary" id="save-budget">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/budget.js"></script>
+</body>
+</html>
